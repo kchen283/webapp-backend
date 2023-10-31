@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import OpenAI from 'openai';
 
 
-import { signup, login } from '../controllers/auth.js'
+import { signup, login } from './controllers/auth.js'
 
 const router = express.Router();
 
@@ -60,9 +60,9 @@ router.get('/patients', async (req, res) => {
     }
 });
 
-const api = process.env.REACT_APP_OPENAI_API_KEY;
-
-const openai = new OpenAI({ apiKey: api });
+const openai = new OpenAI({
+    apiKey: process.env.REACT_APP_OPENAI_API_KEY // This is also the default, can be omitted
+  });
 
 router.post('/ask', async (req, res) => {
     const userMessage = req.body.message;
