@@ -60,7 +60,9 @@ router.get('/patients', async (req, res) => {
     }
 });
 
-const openai = new OpenAI({ apiKey: process.env.REACT_APP_OPENAI_API_KEY});
+const api = process.env.REACT_APP_OPENAI_API_KEY;
+
+const openai = new OpenAI({ apiKey: api });
 
 router.post('/ask', async (req, res) => {
     const userMessage = req.body.message;
